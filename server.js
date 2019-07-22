@@ -1,5 +1,4 @@
 // server.js
-// where your node app starts
 
 // init project
 var express = require('express');
@@ -18,10 +17,9 @@ app.get("/", function (req, res) {
   res.sendFile(__dirname + '/views/index.html');
 });
 
-
-// your first API endpoint... 
-app.get("/api/hello", function (req, res) {
-  res.json({greeting: 'hello API'});
+// request header parser
+app.get("/api/whoami", function (req, res) {
+  res.json({ipadress: req.ip.split(':')[3],language: req.headers["accept-language"] ,software: req.headers["user-agent"]});
 });
 
 
